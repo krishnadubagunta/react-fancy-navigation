@@ -9,13 +9,13 @@ interface NavRoute {
 interface NavbarProps {
   title: string | JSX.Element
   logo?: JSX.Element
-  navRoutes: JSX.Element[] | NavRoute[]
-  className: string
+  navRoutes?: JSX.Element[] | NavRoute[]
+  className?: string
   sticky?: boolean
 }
 
 export interface ReactFancyNavigationProps extends NavbarProps {
   animate: AnimationType
-  menuType: MenuType
-  children: JSX.Element
+  menuType: MenuType,
+  children?: JSX.Element
 }
