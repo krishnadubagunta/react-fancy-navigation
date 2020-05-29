@@ -8,7 +8,7 @@
     "build-watch": "rollup -c --watch",
     "lint": "standard",
     "format": "prettier-standard --format",
-    "test": "jest --coverage"
+    "test": "jest --coverage --rootDir ."
   },
   "keywords": [
     "navigation",
@@ -22,30 +22,47 @@
     "react-router": "^5.2.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@types/enzyme": "^3.10.5",
     "@types/jest": "^25.2.3",
     "@types/lodash-es": "^4.17.3",
     "@types/react": "^16.9.35",
-    "@types/react-dom": "^16.9.8",
+    "csstype": "^2.6.10",
+    "depcheck": "^0.9.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^26.0.1",
     "lodash-es": "^4.17.15",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-jss": "^10.1.1",
     "rollup": "^2.11.2",
-    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-typescript2": "^0.27.1",
     "standard": "^14.3.4",
-    "standard-prettier": "^1.0.1",
     "ts-jest": "^26.0.0",
     "typescript": "^3.9.3"
   },
   "jest": {
+    "setupFiles": [
+      "<rootDir>/test-shim.js",
+      "<rootDir>/test-setup.js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
     "preset": "ts-jest",
-    "testEnvironment": "jsdom",
-    "testPathIgnorePatterns": [
-      "build/"
+    "testEnvironment": "node",
+    "testMatch": [
+      "<rootDir>/src/__tests__/*.(ts|tsx|js)"
     ]
   },
   "files": [

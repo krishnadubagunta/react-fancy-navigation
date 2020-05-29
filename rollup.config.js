@@ -1,5 +1,5 @@
 import typescript from 'rollup-plugin-typescript2'
-import commonjs from 'rollup-plugin-commonjs'
+import babel from 'rollup-plugin-babel'
 import external from 'rollup-plugin-peer-deps-external'
 import resolve from 'rollup-plugin-node-resolve'
 import pkg from './package.json'
@@ -20,17 +20,15 @@ export default {
       ],
       clean: true
     }),
-    commonjs({
-      include: ['node_modules/**'],
-      namedExports: {
-        'node_modules/react/react.js': [
-          'Children',
-          'Component',
-          'PropTypes',
-          'createElement'
-        ],
-        'node_modules/react-dom/index.js': ['render']
-      }
-    })
+    babel({
+      babelrc: false,
+      presets: [
+        ['es2015', { modules: false }],
+        ['env', { modules: false }],
+        'react',
+      ],
+      plugins: ['external-helpers'],
+      exclude: 'node_modules/**',
+    }),
   ]
 }

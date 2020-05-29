@@ -1,3 +1,3 @@
-import MyComponent from './fancyNavigation'
+import ReactFancyNavigation from './fancyNavigation'
 
-export default MyComponent
+export default ReactFancyNavigation
