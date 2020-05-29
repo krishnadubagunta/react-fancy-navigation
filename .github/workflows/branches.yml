@@ -27,7 +27,7 @@ jobs:
 
     - name: Run Tests & Code Coverage
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       uses: mattallty/jest-github-action@v1.0.2
       with:
           changes-only: true
