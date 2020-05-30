@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactFancyNavigationProps } from "./types";
+import { ReactFancyNavigationProps } from './types'
 
 const ReactFancyNavigation = (props: ReactFancyNavigationProps): JSX.Element => {
   

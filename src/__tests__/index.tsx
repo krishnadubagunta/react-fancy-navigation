@@ -15,4 +15,11 @@ describe('React Navigation test', () => {
       .toJSON();
     expect(tree).toMatchSnapshot()
   })
+
+  it('visual regression testing', async () => {
+    await page.goto('http://localhost:3000');
+    const image = await page.screenshot();
+
+    expect(image).toMatchImageSnapshot();
+  })
 })
