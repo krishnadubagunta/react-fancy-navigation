@@ -25,10 +25,10 @@ export default {
       presets: [
         ['es2015', { modules: false }],
         ['env', { modules: false }],
-        'react',
+        'react'
       ],
       plugins: ['external-helpers'],
-      exclude: 'node_modules/**',
-    }),
+      exclude: 'node_modules/**'
+    })
   ]
 }
