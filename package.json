@@ -9,7 +9,7 @@
     "lint": "standard",
     "format": "prettier-standard --format",
     "test": "jest --coverage",
-    "test-ci": "jest --coverage --collect-coverage --ci --reporters=default --reporters=jest-junit"
+    "test-ci": "jest --coverage --collect-coverage --ci --reporters=default"
   },
   "keywords": [
     "navigation",
