@@ -25,10 +25,11 @@ jobs:
     - name: Install Packages
       run: yarn
 
-    - uses: ziishaned/jest-reporter-action@v0.0.1
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.7
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        test-command: "yarn test-ci"
+        token: $secrets.CODECOV_SECRET
+        
 
     - name: Jest Github Action Reporter
       uses: IgnusG/jest-report-action@v2.3.1
