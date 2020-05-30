@@ -29,7 +29,3 @@ jobs:
       uses: codecov/codecov-action@v1.0.7
       with:
         token: $secrets.CODECOV_SECRET
-        
-
-    - name: Jest Github Action Reporter
-      uses: IgnusG/jest-report-action@v2.3.1
