@@ -1,7 +1,8 @@
 module.exports = {
   launch: {
-    headless: false,
-    devtools: true
+    headless: !process.env.CI === 'true',
+    devtools: true,
+    dumpio: true
   },
   server: {
     command: 'yarn start --scripts-prepend-node-path',
