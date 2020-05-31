@@ -4,7 +4,7 @@ name: CI
 
 env:
   CI: true
-  GDRIVE_TOKEN: ${{ secrets.GDRIVE_TOKEN }}
+
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
@@ -34,7 +34,9 @@ jobs:
       run: yarn lint
 
     - name: Tests
-      run: yarn test-ci
+      env:
+        GDRIVE_TOKEN: ${{ secrets.GDRIVE_TOKEN }}
+      run: echo ${{ secrets.GDRIVE_TOKEN }} && yarn test-ci
 
     - name: Codecov
       uses: codecov/codecov-action@v1.0.7
