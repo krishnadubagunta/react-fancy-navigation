@@ -25,8 +25,8 @@ function ImageReporter (globalConfig, options) {
         const fileMetadata = {
           name
         }
-        const result = await uploadFilesMultipart(mediaObject, fileMetadata)
-        console.log(result)
+        // const result = await uploadFilesMultipart(mediaObject, fileMetadata)
+        // console.log(result)
       })
     }
   }
