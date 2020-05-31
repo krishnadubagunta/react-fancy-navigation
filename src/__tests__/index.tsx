@@ -4,19 +4,6 @@ import ReactFancyNavigation from '../index'
 import renderer from "react-test-renderer";
 
 describe('React Navigation test', () => {
-  it('Renders', async () => {
-    const component = shallow(<ReactFancyNavigation animate="none" menuType="hamburger" title="Heading" />).contains(<header>Pre Head</header>)
-    debugger
-    expect(component).toBeTruthy()
-  })
-
-  it('does snapshot testing', () => {
-    const tree = renderer
-      .create(<ReactFancyNavigation animate="none" menuType="hamburger" title="Heading" />)
-      .toJSON();
-    expect(tree).toMatchSnapshot()
-  })
-
   it('visual regression testing', async () => {
     await page.goto('http://localhost:3000')
     const image = await page.screenshot()
