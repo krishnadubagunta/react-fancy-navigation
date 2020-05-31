@@ -1,28 +1,19 @@
-import { google } from "googleapis"
-import fs from "fs";
-
-export interface FileMetadata {
-  name: string,
-}
-
-export interface MediaMimeType {
-  mimeType?: string,
-  body: fs.WriteStream
-}
+const { google } = require('googleapis')
+const fs = require('fs')
 
 const drive = google.drive({
   version: 'v3',
   auth: process.env.GDRIVE_TOKEN
 })
 
-export const uploadFilesMultipart = (mediaObject: MediaMimeType, { name }: FileMetadata) => {
+const uploadFilesMultipart = function (mediaObject, fileReference) {
   return new Promise((resolve, reject) => {
     drive.files.create({
       media: mediaObject,
       key: process.env.GDRIVE_TOKEN,
       fields: 'id',
       requestBody: {
-        name
+        name: fileReference.name
       },
     }, (error, file) => {
         if(!!error) {
@@ -31,4 +22,8 @@ export const uploadFilesMultipart = (mediaObject: MediaMimeType, { name }: FileM
         resolve(file)
     })
   })
+}
+
+module.exports = {
+  uploadFilesMultipart
 }

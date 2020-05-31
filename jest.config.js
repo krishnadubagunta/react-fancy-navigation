@@ -1,6 +1,19 @@
+const { defaults: tsjPreset } = require('ts-jest/presets')
+
 module.exports = {
   transform: {
-    '^.+\\.tsx?$': 'ts-jest'
+    ...tsjPreset.transform
+  },
+  globals: {
+    'ts-jest': {
+      babelConfig: {
+        presets: [
+          '@babel/preset-env',
+          '@babel/preset-react'
+        ],
+
+      }
+    }
   },
   testMatch: ['<rootDir>/src/__tests__/*.tsx'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
@@ -14,5 +27,5 @@ module.exports = {
   ],
   preset: 'jest-puppeteer',
   snapshotSerializers: ['enzyme-to-json/serializer'],
-  reporters: ['default', '<rootDir>/dist/TestReports/ImageReporter.js']
+  reporters: ['default', '<rootDir>/TestReports/ImageReporter.js']
 }

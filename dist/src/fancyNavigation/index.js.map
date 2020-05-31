@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/fancyNavigation/index.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAA;AAGzB,MAAM,oBAAoB,GAAG,CAAC,KAAgC,EAAe,EAAE;IAE7E,OAAO;QACL,iDAA2B;QAC3B,6BAAK,uBAAuB,EAAG,EAAE,MAAM,EAAE,IAAI,CAAC,SAAS,CAAC,KAAK,EAAE,SAAS,EAAE,CAAC,CAAC,EAAE,GAAI,CAC9E,CAAA;AACR,CAAC,CAAA;AAED,eAAe,oBAAoB,CAAA"}
