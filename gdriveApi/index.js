@@ -5,17 +5,16 @@ const drive = google.drive({
   auth: process.env.GDRIVE_TOKEN
 })
 
-const uploadFilesMultipart = function (mediaObject, fileReference) {
+const uploadFilesMultipart = function (mediaObject, fileMetadata) {
   console.log(drive.about)
   console.log(process.env.GDRIVE_TOKEN)
   return new Promise((resolve, reject) => {
     drive.files.create({
       media: mediaObject,
       key: process.env.GDRIVE_TOKEN,
+      resource: fileMetadata,
+      uploadType: 'media',
       fields: 'id',
-      requestBody: {
-        name: fileReference.name
-      }
     }, (error, file) => {
       if (error) {
         reject(error)

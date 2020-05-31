@@ -6,3 +6,4 @@ coverage/**
 junit.xml
 examples/yarn.lock
 **/__tests__/**/__diff_output__/**
+keys/
