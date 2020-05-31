@@ -4,6 +4,7 @@ module.exports = {
   },
   server: {
     command: 'BROWSER=none yarn start --scripts-prepend-node-path',
-    port: 3000
+    port: 3000,
+    launchTimeout: 10000,
   }
 }
