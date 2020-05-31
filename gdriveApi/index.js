@@ -6,8 +6,7 @@ const drive = google.drive({
 })
 
 const uploadFilesMultipart = function (mediaObject, fileMetadata) {
-  console.log(drive.about)
-  console.log(process.env.GDRIVE_TOKEN)
+  console.error(drive.permissions)
   return new Promise((resolve, reject) => {
     drive.files.create({
       media: mediaObject,
