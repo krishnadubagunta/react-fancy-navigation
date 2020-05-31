@@ -1,25 +1,21 @@
 const { google } = require('googleapis')
 
-const drive = google.drive({
-  version: 'v3',
-  auth: process.env.GDRIVE_TOKEN
-})
+const drive = () => {
+  google.options({ auth: process.env.GDRIVE_TOKEN })
+  return google.drive('v3')
+}
 
 const uploadFilesMultipart = function (mediaObject, fileMetadata) {
-  console.error(drive.permissions)
-  return new Promise((resolve, reject) => {
-    drive.files.create({
+  return new Promise(async (resolve, reject) => {
+    const g = await drive().files.create({
       media: mediaObject,
-      key: process.env.GDRIVE_TOKEN,
-      resource: fileMetadata,
-      uploadType: 'media',
-      fields: 'id'
-    }, (error, file) => {
-      if (error) {
-        reject(error)
+      requestBody: {
+        name: fileMetadata.name,
+        isAppAuthorized: true
       }
-      resolve(file)
     })
+
+    console.log(g.status)
   })
 }
 
