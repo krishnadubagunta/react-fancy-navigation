@@ -1,6 +1,8 @@
 # React Fancy Navigation
 
 ![CI](https://github.com/krishnadubagunta/react-fancy-navigation/workflows/CI/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/krishnadubagunta/react-fancy-navigation/branch/master/graph/badge.svg)](https://codecov.io/gh/krishnadubagunta/react-fancy-navigation)
+
 
 ## Final State of this Project
 

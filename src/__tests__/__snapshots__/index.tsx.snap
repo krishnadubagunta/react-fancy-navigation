@@ -3,7 +3,7 @@
 exports[`React Navigation test does snapshot testing 1`] = `
 <div>
   <header>
-    Pre Head
+    Div Header 904
   </header>
   <pre
     dangerouslySetInnerHTML={

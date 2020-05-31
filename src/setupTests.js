@@ -7,8 +7,8 @@ require('expect-puppeteer')
 Enzyme.configure({ adapter: new Adapter() })
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   customDiffConfig: {
-    threshold: 5
+    threshold: 0
   },
-  noColors: false
+  noColors: true
 })
 expect.extend({ toMatchImageSnapshot })
