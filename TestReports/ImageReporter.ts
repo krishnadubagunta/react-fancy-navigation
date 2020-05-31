@@ -1,6 +1,7 @@
 
 'use_strict'
-import { uploadFilesMultipart, FileMetadata, MediaMimeType } from "../gdriveApi";
+
+import { uploadFilesMultipart, FileMetadata, MediaMimeType } from '../gdriveApi'
 import { Reporter, Test } from '@jest/reporters'
 import { TestResult, AggregatedResult } from '@jest/test-result'
 import path from 'path'

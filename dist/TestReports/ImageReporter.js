@@ -1,5 +1,5 @@
 'use_strict';
-import { uploadFilesMultipart } from "../gdriveApi";
+import { uploadFilesMultipart } from '../gdriveApi';
 import path from 'path';
 import fs from 'fs';
 class ImageReporter {
