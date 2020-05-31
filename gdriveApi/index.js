@@ -1,5 +1,4 @@
 const { google } = require('googleapis')
-const fs = require('fs')
 
 const drive = google.drive({
   version: 'v3',
@@ -14,12 +13,12 @@ const uploadFilesMultipart = function (mediaObject, fileReference) {
       fields: 'id',
       requestBody: {
         name: fileReference.name
-      },
+      }
     }, (error, file) => {
-        if(!!error) {
-          reject(error)
-        }
-        resolve(file)
+      if (error) {
+        reject(error)
+      }
+      resolve(file)
     })
   })
 }

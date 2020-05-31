@@ -1,26 +1,28 @@
 const path = require('path')
 const fs = require('fs')
-const { uploadFilesMultipart } = require("../gdriveApi")
+const { uploadFilesMultipart } = require('../gdriveApi')
 
 function ImageReporter (globalConfig, options) {
   this._globalConfig = globalConfig
   this._options = options
 
   this.onTestResult = (test, testResult, aggregatedResult) => {
-    if(!process.env.CI) return
+    if (!process.env.CI) return
 
     const failedTests = testResult.numFailingTests
+
+    console.log(testResult)
     const testResultFailureMessage = testResult ? testResult.failureMessage ? testResult.failureMessage.match(/different from snapshot/) : '' : ''
-    if (failedTests != 0 && testResultFailureMessage != '') {
+    if (failedTests !== 0 && testResultFailureMessage !== '') {
       const dirPath = path.dirname(testResult.testFilePath)
-      const diffOutputPath = path.resolve(dirPath, "__image_snapshots__/__diff_output__")
+      const diffOutputPath = path.resolve(dirPath, '__image_snapshots__/__diff_output__')
       const files = fs.readdirSync(diffOutputPath)
 
       files.forEach(async (file) => {
-        const name = `diff_output/${file}`;
+        const name = `diff_output/${file}`
         const mediaObject = {
           mimeType: 'image/jpeg',
-          body: fs.createWriteStream(file),
+          body: fs.createWriteStream(file)
         }
         const fileMetadata = {
           name

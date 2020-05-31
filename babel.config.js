@@ -1,5 +1,7 @@
-module.exports = {
-  presets: [
-    "@babel/preset-react"
-  ]
+module.exports = function (api) {
+  return {
+    presets: [
+      '@babel/preset-react'
+    ]
+  }
 }
