@@ -1,8 +1,7 @@
 node_modules/
-dist/
 **/node_modules/
-**/.env
 .vscode/
 yarn-error.log
 coverage/**
 junit.xml
+examples/yarn.lock
