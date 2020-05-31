@@ -14,7 +14,7 @@ const uploadFilesMultipart = function (mediaObject, fileMetadata) {
       key: process.env.GDRIVE_TOKEN,
       resource: fileMetadata,
       uploadType: 'media',
-      fields: 'id',
+      fields: 'id'
     }, (error, file) => {
       if (error) {
         reject(error)
