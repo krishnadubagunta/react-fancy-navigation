@@ -5,3 +5,4 @@ yarn-error.log
 coverage/**
 junit.xml
 examples/yarn.lock
+**/__tests__/**/__diff_output__/**
