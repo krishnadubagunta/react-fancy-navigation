@@ -6,7 +6,7 @@ var React = _interopDefault(require('react'));
 
 const ReactFancyNavigation = (props) => {
     return React.createElement("div", null,
-        React.createElement("header", null, "Pre Header"),
+        React.createElement("header", null, "Pre Head"),
         React.createElement("pre", { dangerouslySetInnerHTML: { __html: JSON.stringify(props, undefined, 2) } }));
 };
 

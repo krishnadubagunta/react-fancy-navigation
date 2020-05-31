@@ -10,7 +10,8 @@
     "lint": "standard",
     "format": "prettier-standard --format",
     "test": "jest --coverage",
-    "test-ci": "jest --coverage --collect-coverage --ci --reporters=default"
+    "test-ci": "CI=true jest --coverage --collect-coverage --ci",
+    "tdd": "TDD=true npm run test"
   },
   "keywords": [
     "navigation",

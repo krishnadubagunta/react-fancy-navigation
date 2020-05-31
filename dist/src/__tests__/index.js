@@ -4,7 +4,8 @@ import ReactFancyNavigation from '../index';
 import renderer from "react-test-renderer";
 describe('React Navigation test', () => {
     it('Renders', async () => {
-        const component = shallow(React.createElement(ReactFancyNavigation, { animate: "none", menuType: "hamburger", title: "Heading" })).contains(React.createElement("header", null, "Pre Header"));
+        const component = shallow(React.createElement(ReactFancyNavigation, { animate: "none", menuType: "hamburger", title: "Heading" })).contains(React.createElement("header", null, "Pre Head"));
+        debugger;
         expect(component).toBeTruthy();
     });
     it('does snapshot testing', () => {

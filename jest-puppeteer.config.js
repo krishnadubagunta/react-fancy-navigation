@@ -1,11 +1,9 @@
 module.exports = {
   launch: {
-    headless: !process.env.CI === 'true',
-    devtools: true,
-    dumpio: true
+    headless: process.env.CI === 'true' || !process.env.TDD
   },
   server: {
-    command: 'yarn start --scripts-prepend-node-path',
+    command: 'BROWSER=none yarn start --scripts-prepend-node-path',
     port: 3000
   }
 }
