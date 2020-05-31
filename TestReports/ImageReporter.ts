@@ -1,6 +1,6 @@
 
 'use_strict'
-// import { uploadFilesMultipart, FileMetadata, MediaMimeType } from "../gdriveApi";
+import { uploadFilesMultipart, FileMetadata, MediaMimeType } from "../gdriveApi";
 import { Reporter, Test } from '@jest/reporters'
 import { TestResult, AggregatedResult } from '@jest/test-result'
 import path from 'path'
@@ -8,10 +8,10 @@ import fs from 'fs'
 
 class ImageReporter implements Pick<Reporter, 'onTestResult'> {
 
-  async onTestResult(test: Test, testResult: TestResult, _aggregatedResult: AggregatedResult) {
+  async onTestResult(_test: Test, testResult: TestResult, _aggregatedResult: AggregatedResult) {
     if(!process.env.CI) return
 
-    if (testResult.numFailingTests && testResult.failureMessage.match(/different from snapshot/)) {
+    if (testResult.numFailingTests && testResult?.failureMessage?.match(/different from snapshot/)) {
       const dirPath = path.dirname(testResult.testFilePath)
       const diffOutputPath = path.resolve(dirPath, "__image_snapshots__/__diff_output__")
       const files = fs.readdirSync(diffOutputPath)
