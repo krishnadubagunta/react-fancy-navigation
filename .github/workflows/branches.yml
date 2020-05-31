@@ -27,7 +27,7 @@ jobs:
       name: Checkout Branch
 
     - name: Install Packages
-      run: yarn
+      run: yarn && yarn install --prefix ./examples
 
     - name: Lint
       run: yarn lint
