@@ -10,8 +10,6 @@ function ImageReporter (globalConfig, options) {
     if (!process.env.CI) return
 
     const failedTests = testResult.numFailingTests
-
-    console.log(testResult)
     const testResultFailureMessage = testResult ? testResult.failureMessage ? testResult.failureMessage.match(/different from snapshot/) : '' : ''
     if (failedTests !== 0 && testResultFailureMessage !== '') {
       const dirPath = path.dirname(testResult.testFilePath)
@@ -22,7 +20,7 @@ function ImageReporter (globalConfig, options) {
         const name = `diff_output/${file}`
         const mediaObject = {
           mimeType: 'image/jpeg',
-          body: fs.createWriteStream(file)
+          body: fs.createReadStream(path.resolve(diffOutputPath, file))
         }
         const fileMetadata = {
           name
@@ -35,29 +33,3 @@ function ImageReporter (globalConfig, options) {
 }
 
 module.exports = ImageReporter
-
-// class ImageReporter {
-//   constructor(globalConfig: any, options: any) {
-//     this._globalConfig = globalConfig;
-//     this._options = options;
-//   }
-
-//   async onTestResult(_test: any, testResult: any, _aggregateResults: any) {
-//     if(!process.env.CI) return
-//     if (testResult.numFailingTests && testResult.failureMessage.match(/different from snapshot/)) {
-//       const files: string[] = fs.readdirSync('./__tests__/__image_snapshots__/__diff_output__/');
-//       files.forEach(async (value) => {
-//         const name = `diff_output/${value}`;
-//         const mediaObject: MediaMimeType = {
-//           mimeType: 'image/jpeg',
-//           body: fs.createWriteStream(value),
-//         }
-//         const fileMetadata: FileMetadata = {
-//           name
-//         }
-//         const result = await uploadFilesMultipart(mediaObject, fileMetadata)
-//         console.log(result)
-//       });
-//     }
-//   }
-// }
