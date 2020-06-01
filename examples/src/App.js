@@ -6,7 +6,7 @@ function App () {
   return (
     <div className='App'>
       <header className='App-header'>
-        <ReactFancyNavigation animate='translation' />
+        <ReactFancyNavigation animate='translate' />
       </header>
     </div>
   )

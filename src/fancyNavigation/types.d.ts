@@ -1,8 +1,8 @@
-export type AnimationType = 'none' | 'translate' | 'tabbed'
+type AnimationType = 'none' | 'translate' | 'tabbed'
 type MenuType = 'hamburger' | 'tabs'
 
-interface NavRoute {
-  name: string
+type NavRoute = {
+  name: string,
   path: string
 }
 
@@ -16,6 +16,5 @@ interface NavbarProps {
 
 export interface ReactFancyNavigationProps extends NavbarProps {
   animate: AnimationType
-  menuType: MenuType,
-  children?: JSX.Element
+  menuType: MenuType
 }

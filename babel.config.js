@@ -4,6 +4,9 @@ module.exports = function (api) {
   return {
     presets: [
       '@babel/preset-react'
+    ],
+    plugins: [
+      "@loadable/babel-plugin"
     ]
   }
 }
