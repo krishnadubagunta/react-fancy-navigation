@@ -1,21 +1,31 @@
 import typescript from 'rollup-plugin-typescript2'
 import babel from 'rollup-plugin-babel'
-import commonjs from '@rollup/plugin-commonjs';
-import external from 'rollup-plugin-peer-deps-external'
+import commonjs from 'rollup-plugin-commonjs'
+import react from 'react'
+import reactDom from 'react-dom'
 import resolve from 'rollup-plugin-node-resolve'
-import pkg from './package.json'
 import { DEFAULT_EXTENSIONS } from '@babel/core'
 
 export default {
-  input: 'src/index.ts',
+  input: ['src/index.ts', 'src/fancyNavigation/AnimationClass/TranslationClass/index.tsx'],
   output: {
-    file: pkg.main,
-    format: 'cjs'
+    dir: 'dist',
+    format: 'cjs',
+    sourcemap: true
   },
-  inlineDynamicImports: true,
+  external: [
+    'react',
+    'react-dom'
+  ],
   plugins: [
-    external(),
     resolve(),
+    commonjs({
+      include: 'node_modules/**',
+      namedExports: {
+        react: Object.keys(react),
+        'react-dom': Object.keys(reactDom)
+      }
+    }),
     typescript({
       rollupCommonJSResolveHack: true,
       exclude: [
@@ -26,7 +36,7 @@ export default {
     babel({
       babelrc: true,
       presets: [
-        ['@babel/preset-env', { modules: 'auto' }],
+        ['@babel/preset-env', { modules: 'auto', loose: true }],
         '@babel/preset-react'
       ],
       extensions: [

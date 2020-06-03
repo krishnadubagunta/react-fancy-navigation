@@ -3,12 +3,16 @@ import { ReactFancyNavigationProps } from "./types"
 import { px } from "../utils/styles"
 import { isNil } from "lodash-es"
 
-const styles: Styles<ReactFancyNavigationProps> = (_theme) => ({
-  navbar: ({ sticky }) => ({
-    height: px(50),
-    backgroundColor: 'white',
+export type NavStyles = Styles<ReactFancyNavigationProps>
+
+const styles: NavStyles = {
+  navbar: ({ sticky, height, color }) => ({
+    height: isNil(height) ? px(50) : px(height),
+    width: '100vw',
+    backgroundColor: color ? color : 'AliceBlue',
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
     position: sticky ? 'sticky' : 'absolute',
     top: 0
   }),
@@ -17,6 +21,6 @@ const styles: Styles<ReactFancyNavigationProps> = (_theme) => ({
     justifyContent: 'flex-start',
     alignItems: 'center'
   })
-})
+}
 
 export default makeStyles(styles)

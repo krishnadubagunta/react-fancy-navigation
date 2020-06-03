@@ -1,21 +1,27 @@
-import React, { ExoticComponent } from 'react'
-import { ReactFancyNavigationProps } from './types'
-import LoadableTranslateComponent from './AnimationClass/TranslationClass'
-import { TranslationNavigationProps } from './AnimationClass/TranslationClass/types'
+import React, { Suspense } from 'react'
+import { ReactFancyNavigationProps, ReactFancyNavigationComponent } from './types'
+import LoadableTranslationComponent from './AnimationClass/TranslationClass'
+import { includes, join } from 'lodash-es'
+import { SupportedAnimations } from '../constants'
+import BaseNavbar from './BaseNavbar'
 
-
-type RFNAnimateOmitted = Omit<ReactFancyNavigationProps,'animate'>
-
-const ComponentToRender = ({ animate, ...props }: ReactFancyNavigationProps): ExoticComponent<RFNAnimateOmitted> => {
-  switch(animate) {
-    case 'translate':
-      return <LoadableTranslateComponent {...props as TranslationNavigationProps } />
-    default:
-      return <div typeof=''></div>
+const ComponentToRender: any = ({ animate, ...props }: ReactFancyNavigationProps) => {
+  if(animate) {
+    return <LoadableTranslationComponent {...props} />
+  }
+  else {
+    return <LoadableTranslationComponent {...props} />
   }
 }
 
 
-const ReactFancyNavigation = (props: ReactFancyNavigationProps): ExoticComponent<RFNAnimateOmitted> => <ComponentToRender {...props} />
+const ReactFancyNavigation: ReactFancyNavigationComponent = ({ animate, ...props}: ReactFancyNavigationProps) => {
+  const animateIsInSupportedProps = includes(SupportedAnimations, animate)
+  if(!animateIsInSupportedProps) console.warn(`Animate prop value ${animate} is not supported, please choose among ${join(SupportedAnimations, ', ')}`)
+
+  return (<Suspense fallback={<BaseNavbar />}>
+    <ComponentToRender animate={animate} {...props} />
+  </Suspense>)
+}
 
 export default ReactFancyNavigation
