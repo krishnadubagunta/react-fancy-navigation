@@ -1,3 +1,3 @@
-import { ReactFancyNavigationProps } from './types';
-declare const ReactFancyNavigation: (props: ReactFancyNavigationProps) => JSX.Element;
+import { ReactFancyNavigationComponent } from './types';
+declare const ReactFancyNavigation: ReactFancyNavigationComponent;
 export default ReactFancyNavigation;
